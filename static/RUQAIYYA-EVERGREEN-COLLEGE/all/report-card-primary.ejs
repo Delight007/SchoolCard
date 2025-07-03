@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= data.student.name %> Report Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      /* background-color: #f5f0e6; */
+      color: #333;
+    }
+    
+    .container {
+      /* width: 210mm; */
+      height: dvh;
+      padding: 5mm;
+      margin: 0 auto;
+      background-color: white;
+    }
+    
+    .header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    
+    .logo {
+          width: 100px !important;
+          height: 100px !important;
+      border: 1px solid #000;
+      margin-right: 10px;
+    }
+    
+    .school-info {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .school-name {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 0;
+      color: #444;
+    }
+    
+    .school-level {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 5px 0;
+      color: #1a8754;
+    }
+    
+    .school-address {
+      font-size: 12px;
+      margin: 2px 0;
+    }
+    
+    .school-contact {
+      font-size: 12px;
+      margin: 2px 0;
+    }
+    
+    .report-title {
+      text-align: center;
+      /* border-bottom: 1px solid #000; */
+      padding-bottom: 5px;
+      margin: 15px 0;
+      font-size: 14px;
+      font-weight: bold;
+      color: #1a8754; 
+      text-transform: uppercase;
+
+    }
+    
+    .student-info {
+      margin-bottom: 15px;
+    }
+    
+    .info-row {
+      display: flex;
+      margin-bottom: 5px;
+      /* margin-top: 30px; */
+    }
+    
+    .info-label {
+      font-weight: bold;
+      font-size: 12px;
+      margin-right: 5px;
+    }
+    
+    .info-value {
+      flex: 1;
+      border-bottom: 1px solid #333;
+      font-size: 12px;
+      min-width: 100px;
+      margin-right: 15px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+      font-size: 11px;
+    }
+    
+    th, td {
+      border: 1px solid #333;
+      padding: 3px;
+      text-align: center;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    
+    .subject-name {
+      text-align: left;
+      font-weight: normal;
+      padding-left: 5px;
+    }
+    
+    .section-title {
+      font-weight: bold;
+      text-align: left;
+      padding-left: 5px;
+    }
+    
+    .development-tables {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+    
+    .development-table {
+      flex: 1;
+    }
+    
+    .remarks {
+      margin-bottom: 15px;
+    }
+    
+    .remark-row {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    
+    .remark-label {
+      width: 150px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    
+    .remark-value {
+      flex: 1;
+      border-bottom: 1px solid #333;
+      font-size: 12px;
+    }
+    
+    .signature {
+      text-align: right;
+      font-style: italic;
+      font-size: 11px;
+      margin-top: 5px;
+    }
+       .red {
+  color: red;
+}
+    
+    /* .grading{
+      width: 100%;
+    display: flex;
+    justify-items: end;
+    align-items: end;
+    flex-direction: column;
+    } */
+
+    .grade-key {
+      /* max-width: 500px; */
+      border: 1px solid #333;
+
+    }
+    
+    .grade-key-title {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      text-align: center;
+      padding: 3px;
+      border-bottom: 1px solid #333;
+      color: #1a8754;
+      font-size: 11px;
+    }
+    
+    .grade-key-row {
+      display: flex;
+      padding: 2px 5px;
+      border-bottom: 1px solid #eee;
+      font-size: 11px;
+    }
+    
+    .grade-key-row:last-child {
+      border-bottom: none;
+    }
+    
+    .grade-range {
+      width: 80px;
+    }
+    
+    .grade-description {
+      flex: 1;
+    }
+    
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #1a8754;
+      font-size: 12px;
+    }
+    
+    .checkmark {
+      font-size: 10px;
+    }
+
+      .passport {
+          width: 100px !important;
+          height: 100px !important;
+      border: 1px solid #000;
+
+        }
+        .passport_text {
+          font-size: 12px !important;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <% if (data.school.logo) { %>
+          <img src="<%= data.school.logo %>" alt="School Logo" width="80" height="80" style="object-fit: contain">
+        <% } %>
+      </div>
+      <div class="school-info">
+        <h1 class="school-name"><%= data.school.name %></h1>
+        <h2 class="school-level">PRIMARY SCHOOL</h2>
+        <p class="school-address"><%= data.school.address %></p>
+        <p class="school-contact">Tel: 08023977712, 08130089602</p>
+        <p class="school-contact">E-mail: ruqaiyyaevergreencollege@gmail.com</p>
+      </div>
+     <div
+            class="passport"
+            style="
+              position: relative;
+              border: 1px solid #000;
+              width: 200px;
+              height: 200px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <% if (data.student.passport) { %>
+            <img
+              src="<%= data.student.passport %>"
+              alt="Passport"
+              height="200"
+              width="200"
+              style="object-fit: contain"
+            />
+            <% } else { %>
+            <div
+              class="passport_text"
+              style="
+                position: absolute;
+                color: #000;
+                font-weight: bold;
+                font-size: 20px;
+                transform: rotate(-45deg);
+                opacity: 0.5;
+                text-align: center;
+              "
+            >
+              Passport
+            </div>
+            <% } %>
+          </div>
+    </div>
+    
+    <div class="report-title">
+      REPORT SHEET FOR <%=data.termName %> <%= data.sessionName %> SESSION
+    </div>
+    
+    
+    <div class="student-info">
+      <div class="info-row" style="padding-bottom: 7px;">
+        <div class="info-label">Pupil's Name:</div>
+        <div class="info-value"><%= data.student.name %></div>
+      </div>
+      <div class="info-row" style="padding-bottom: 3px;">
+        <div class="info-label">Admission No:</div>
+        <div class="info-value"><%= data.student.regNumber %></div>
+        <div class="info-label">Class:</div>
+        <div class="info-value"><%= data.className %></div>
+        <div class="info-label">No in Class:</div>
+        <div class="info-value"><%= data.numberInClass %></div>
+      </div>
+      <div class="info-row" style="padding-bottom: 3px;">
+        <div class="info-label">House:</div>
+        <div class="info-value"><%= data.house %></div>
+        <div class="info-label">No of time School Opens:</div>
+        <div class="info-value"><%= data.numberOfDaysOpened %></div>
+        <div class="info-label">No of Times Present:</div>
+        <div class="info-value"><%= data.presentCount %></div>
+      </div>
+      <div class="info-row" style="padding-bottom: 3px;">
+        <div class="info-label">No of Time Absent:</div>
+        <div class="info-value"><%= data.numberOfDaysOpened - data.presentCount %></div>
+        <div class="info-label">Class Average:</div>
+        <div class="info-value"><%= data.averageScore %></div>
+        <div class="info-label">Pupil's Average:</div>
+        <div class="info-value"></div>
+      </div>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th style="
+      color: #1a8754;
+            ">SUBJECT</th>
+          <th>Home Work<br>(10)  Marks</th>
+          <th>Class Work<br>(10) Marks</th>
+          <th>Mid Term<br>Test (20) Marks</th>
+          <th>Exam<br>(60) Marks</th>
+          <th>Total<br>100%</th>
+          <th>Grade</th>
+          <th>Brought<br>forward</th>
+          <th>Total</th>
+        </tr>
+        
+      </thead>
+      <tbody>
+   
+        <% data.subjects.forEach(function(subject) { %>
+        <tr>
+          <td class="subject-name"><%= subject.subjectName %></td>
+          <td><%= subject.assessments ? subject.assessments[0] : '' %></td>
+          <td><%= subject.assessments ? subject.assessments[1] : '' %></td>
+          <td><%= subject.assessments ? subject.assessments[2] : '' %></td>
+          <td><%= subject.assessments ? subject.assessments[3] : '' %></td>
+          <td style="font-weight: 900;"><%= subject.total %></td>
+            <td class="<%= subject.grade && subject.grade.label === 'F' ? 'red' : '' %>" style="font-weight: bold;">
+  <%= subject.grade ? subject.grade.label : '' %>
+</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <% }); %>
+        
+      
+      </tbody>
+    </table>
+    
+    <div class="development-tables">
+      <div class="development-table">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="6" style="
+      color: #1a8754; padding: 10px 0;
+                ">B<br>AFFECTIVE DEVELOPMENT</th>
+            </tr>
+            <tr>
+              <th rowspan="2">BEHAVIOUR<br>TRAITS</th>
+              <th colspan="5">RATINGS</th>
+            </tr>
+            <tr>
+              <th>A</th>
+              <th>B</th>
+              <th>C</th>
+              <th>D</th>
+              <th>E</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.character_development.forEach(function(trait, index) { %>
+            <tr>
+              <td><%= index + 1 %>. <%= trait.name %></td>
+              <td><%= trait.value === 'A' ? '✓' : '' %></td>
+              <td><%= trait.value === 'B' ? '✓' : '' %></td>
+              <td><%= trait.value === 'C' ? '✓' : '' %></td>
+              <td><%= trait.value === 'D' ? '✓' : '' %></td>
+              <td><%= trait.value === 'E' ? '✓' : '' %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="development-table">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="6" style="
+      color: #1a8754;  padding: 10px 0;
+                ">C<br>PSYCHOMOTOR DEVELOPMENT</th>
+            </tr>
+            <tr>
+              <th rowspan="2">SKILLS</th>
+              <th colspan="5">RATINGS</th>
+            </tr>
+            <tr>
+              <th>A</th>
+              <th>B</th>
+              <th>C</th>
+              <th>D</th>
+              <th>E</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.practical_skills.forEach(function(skill) { %>
+            <tr>
+              <td><%= skill.name %></td>
+              <td><%= skill.value === 'A' ? '✓' : '' %></td>
+              <td><%= skill.value === 'B' ? '✓' : '' %></td>
+              <td><%= skill.value === 'C' ? '✓' : '' %></td>
+              <td><%= skill.value === 'D' ? '✓' : '' %></td>
+              <td><%= skill.value === 'E' ? '✓' : '' %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+
+         <div class="development-table" style="max-width: 200px;">
+        <div class="grade-key">
+       <div class="grade-key-title" style=" padding: 10px 0;">GRADE KEY TO RATING</div>
+        <% data.grades.forEach(function(grade) { %>
+        <div class="grade-key-row"style=" padding: 3px">
+          <div class="grade-range"><%= grade.min %> - <%= grade.max %></div>
+          <div class="grade-description"><%= grade.description %></div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+      </div>
+
+    <div class="info-row" style="padding-bottom: 7px;">
+      <div class="info-label">Total:</div>
+      <div class="info-value"><%= data.markObtained %></div>
+      <div class="info-label">Out of</div>
+      <div class="info-value"><%= data.markObtainable %></div>
+    </div>
+    
+    <div class="remarks">
+      <div class="remark-row">
+        <div class="remark-label">Class Teacher's Remark:</div>
+        <div class="remark-value"><%= data.classTeacherRemark %></div>
+      </div>
+      <div class="signature">Sign:_________________________</div>
+      
+      <div class="remark-row">
+        <div class="remark-label">Headmaster's Remark:</div>
+        <div class="remark-value"><%= data.principalRemark %></div>
+      </div>
+      <div class="signature">Sign:_________________________</div>
+      
+      <div class="remark-row">
+        <div class="remark-label">Pass/Fail:</div>
+        <div class="remark-value"></div>
+      </div>
+      
+      <div class="remark-row">
+        <div class="remark-label">This Term Ends On:</div>
+        <div class="remark-value"></div>
+        <div class="remark-label" style="margin-left: 20px;">Next Term Begins on:</div>
+        <div class="remark-value"><%= data.nextTermBegin %></div>
+      </div>
+      
+      <div class="remark-row">
+        <div class="remark-label">Fees owed for the Term</div>
+        <div class="remark-value"><%= data.schoolFeesOwned %></div>
+        <div class="remark-label" style="margin-left: 20px;">Fees for Next Term</div>
+        <div class="remark-value"><%= data.nextTermSchoolFees %></div>
+      </div>
+    </div>
+    
+ 
+     
+    <div style="clear: both;"></div>
+    
+    <div class="footer">
+      SCHOOL FEES ARE PAID ON OR BEFORE RESUMPTION DAY
+    </div>
+  </div>
+</body>
+</html>

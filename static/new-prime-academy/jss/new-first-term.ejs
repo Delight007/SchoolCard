@@ -1,0 +1,685 @@
+<html lang="en">
+  <head>
+    <title><%= data.student.name %> Report Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      @page {
+        size: A4;
+      }
+
+      td,
+      th {
+        border: 2px solid #239160;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        color: #239160;
+      }
+
+      .container {
+        border: 1px solid red;
+        padding: 20px;
+        /* min-height: 90dvh !important; */
+      }
+
+      .report-card {
+        /*border: 2px solid rgb(165, 117, 48);*/
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        padding: 4px;
+        font-size: 0.9em;
+      }
+      @media screen and (max-width: 768px) {
+        .header {
+          align-items: start !important;
+          gap: 10px !important;
+        }
+        .subject_table {
+          overflow-x: auto;
+          min-width: 900px;
+        }
+        .divider {
+          display: none;
+        }
+        .address_motto {
+          flex-direction: column;
+        }
+        .character {
+          flex-direction: column;
+        }
+        .first_text {
+          flex-direction: column;
+        }
+        .subjectName {
+          width: 400px !important;
+        }
+        .container {
+          padding: 10px !important;
+        }
+        .passport {
+          width: 100px !important;
+          height: 100px !important;
+        }
+        .passport_text {
+          font-size: 12px !important;
+        }
+        .school_logo {
+          width: 100px !important;
+          height: 100px !important;
+        }
+        .text {
+          flex-direction: column;
+        }
+        .items {
+          width: 100% !important;
+        }
+        .schoolName {
+          font-size: 20px !important;
+          text-align: center !important;
+        }
+        .school_logo_image {
+          width: 100px !important;
+          height: 100px !important;
+        }
+        .passport_image {
+          width: 100px !important;
+          height: 100px !important;
+        }
+        .sections {
+          font-size: 12px !important;
+        }
+        .address {
+          font-size: 10px !important;
+        }
+        .motto {
+          font-size: 10px !important;
+        }
+        .termly {
+          font-size: 10px !important;
+          padding: 4px !important;
+        }
+        .school_section {
+          font-size: 12px !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="report-card">
+        <div class="header" style="display: flex; justify-content: space-between; gap: 20px">
+          <div class="school_logo" style="border: 1px solid #000; width: 200px; height: 200px">
+            <img
+              class="school_logo_image"
+              src="<%= data.school.logo %>"
+              alt="Logo"
+              height="200"
+              width="200"
+              style="object-fit: contain"
+            />
+          </div>
+          <div style="display: flex; align-items: center; flex-direction: column">
+            <h1 class="schoolName" style="color: #239160; font-size: 35px; margin: 0">
+              <%= data.school.name?.toUpperCase() %>
+            </h1>
+            <h3 class="sections" style="font-size: 20px; color: rgb(51, 71, 75); margin: 0">
+              (NURSERY/PRIMARY/SECONDARY)
+            </h3>
+            <h4
+              class="address"
+              style="
+                margin: 0;
+                font-size: 18px;
+                color: rgb(51, 71, 75);
+                font-weight: 400;
+                margin-top: 5px;
+              "
+            >
+              <%= data.school.address %>
+            </h4>
+            <h5
+              class="motto"
+              style="margin: 0; color: red; font-size: 16px; font-weight: 400; margin-top: 4px"
+            >
+              Motto:
+              <%= data.school.motto %>
+            </h5>
+            <!-- <h5 style="margin: 0; font-size: 10px; color: rgb(51, 71, 75)">
+              Tel: 09133035479, 08054336567
+            </h5> -->
+            <h2
+              class="termly"
+              style="
+                font-size: 14px;
+                margin: 0;
+                background-color: #f70294;
+                padding: 8px;
+                color: white;
+                width: fit-content;
+                margin-top: 6px;
+              "
+            >
+              TERMLY EXAMINATION REPORT SHEET
+            </h2>
+            <div style="margin-top: 10px"></div>
+            <h3 class="school_section" style="margin: 0; font-size: 18px; color: #239160">
+              (JSS SECTION)
+            </h3>
+          </div>
+          <div
+            class="passport"
+            style="
+              position: relative;
+              border: 1px solid #000;
+              width: 200px;
+              height: 200px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <% if (data.student.passport) { %>
+            <img
+              class="passport_image"
+              src="<%= data.student.passport %>"
+              alt="Passport"
+              height="200"
+              width="200"
+              style="object-fit: contain"
+            />
+            <% } else { %>
+            <div
+              class="passport_text"
+              style="
+                position: absolute;
+                color: #000;
+                font-weight: bold;
+                font-size: 20px;
+                transform: rotate(-45deg);
+                opacity: 0.5;
+                text-align: center;
+              "
+            >
+              Passport
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px">
+          <div class="items" style="display: flex; align-items: flex-end; width: 30%; gap: 4px">
+            <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+              ADMISSION NO:
+            </p>
+            <div
+              class="student-name"
+              style="
+                flex: 1;
+                border-bottom: 1px solid #239160;
+                font-size: 16px;
+                font-weight: 400;
+                padding-left: 5px;
+              "
+            >
+              <%= data?.student?.regNumber %>
+            </div>
+          </div>
+          <div class="text" style="display: flex; gap: 10px">
+            <div class="items" style="display: flex; align-items: flex-end; width: 60%; gap: 4px">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                STUDENT NAME:
+              </p>
+              <div
+                class="student-name"
+                style="
+                  flex: 1;
+                  border-bottom: 1px solid #239160;
+                  font-size: 16px;
+                  font-weight: 400;
+                  padding-left: 5px;
+                "
+              >
+                <%= data.student.name %>
+              </div>
+            </div>
+            <div class="items" style="display: flex; align-items: flex-end; gap: 4px; width: 20%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">GENDER:</p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+              >
+                <%= data.student.gender %>
+              </div>
+            </div>
+            <div class="items" style="display: flex; align-items: flex-end; gap: 4px; width: 20%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                NO. IN CLASS:
+              </p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+              >
+                <%= data.numberInClass %>
+              </div>
+            </div>
+          </div>
+          <div class="text" style="display: flex; gap: 20px">
+            <div class="items" style="display: flex; align-items: flex-end; gap: 4px; width: 40%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                STUDENT CLASS:
+              </p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+              >
+                <%= data.className %>
+              </div>
+            </div>
+            <div class="items" style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">TERM:</p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+              >
+                <%= data.termName %>
+              </div>
+            </div>
+            <div class="items" style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                SESSION:
+              </p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+              >
+                <%= data.sessionName %>
+              </div>
+            </div>
+          </div>
+          <div class="text" style="display: flex; gap: 20px">
+            <div class="items" style="display: flex; align-items: flex-end; gap: 4px; width: 40%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                NO OF DAYS SCHOOL OPENED:
+              </p>
+              <div style="flex: 1; font-size: 16px; border-bottom: 1px solid #239160">
+                <%= data.numberOfDaysOpened %>
+              </div>
+            </div>
+            <div class="items" style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                NO OF DAYS PRESENT:
+              </p>
+              <div
+                style="flex: 1; font-size: 16px; font-weight: 400; border-bottom: 1px solid #239160"
+              >
+                <%= data.presentCount %>
+              </div>
+            </div>
+            <div class="items" style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                NO OF DAYS OUT OF SCHOOL:
+              </p>
+              <div
+                style="flex: 1; font-size: 16px; font-weight: 400; border-bottom: 1px solid #239160"
+              >
+                <%= data.numberOfDaysOpened - data.presentCount %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 30px; overflow-x: auto">
+          <table
+            class="subject_table"
+            style="
+              border: 1px solid #239160;
+              width: 100%;
+              table-layout: fixed;
+              border-collapse: collapse;
+            "
+          >
+            <thead>
+              <tr>
+                <th rowspan="2" style="width: 20%; font-size: 14px; padding: 5px; font-weight: 700">
+                  SUBJECTS
+                </th>
+                <th rowspan="2" style="font-size: 14px">CA 1 20%</th>
+                <th rowspan="2" style="font-size: 14px">CA 2 20%</th>
+                <th rowspan="2" style="font-size: 14px">EXAM</th>
+                <th rowspan="2" style="font-size: 14px">TOTAL</th>
+                <th rowspan="2" style="font-size: 14px">GRADE</th>
+                <th rowspan="2" style="font-size: 14px">COMMENT</th>
+                <th rowspan="2" style="font-size: 14px">SIGN</th>
+              </tr>
+              <tr></tr>
+            </thead>
+            <tbody>
+              <% data.subjects.forEach(function({
+                subjectName,
+                subjectId,
+                id1,
+                id2,
+                exam,
+                total,
+                averageScore,
+                grade,
+                comment,
+                sign,
+                assessments,
+                position
+              }) { %>
+
+              <tr>
+                <td style="font-size: 14px; padding: 5px"><%= subjectName %></td>
+                <td style="font-size: 14px; padding-left: 5px">
+                  <%= assessments ? assessments[0] : '' %>
+                </td>
+                <td style="font-size: 14px; padding-left: 5px">
+                  <%= assessments ? assessments[1] : '' %>
+                </td>
+                <td style="font-size: 14px; padding-left: 5px">
+                  <%= assessments ? assessments[2] : '' %>
+                </td>
+                <td style="font-size: 14px; padding-left: 5px"><%= total %></td>
+                <td style="font-size: 14px; padding-left: 5px"><%= grade ? grade?.label : '' %></td>
+                <td style="font-size: 14px; padding-left: 5px">
+                  <%= grade ? grade?.description : "" %>
+                </td>
+                <td style="font-size: 14px; padding-left: 5px"><%= sign %></td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top: 30px">
+          <div class="text" style="display: flex; gap: 20px">
+            <div style="flex: 1; display: flex; align-items: flex-end; gap: 4px">
+              <p style="margin: 0; font-size: 14px; font-weight: 400">TOTAL MARKS OBTAINED:</p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
+              >
+                <%= data.annualRecord.annualMarkObtained ? data.annualRecord.annualMarkObtained : '' %>
+              </div>
+            </div>
+            <div style="flex: 1; display: flex; align-items: flex-end; gap: 4px">
+              <p style="margin: 0; font-size: 14px; font-weight: 400">TOTAL MARK OBTAINABLE:</p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
+              >
+                <%= data.annualRecord.annualMarkObtainable ? data.annualRecord.annualMarkObtainable : '' %>
+              </div>
+            </div>
+            <div style="flex: 1; display: flex; align-items: flex-end; gap: 4px">
+              <p style="margin: 0; font-size: 14px; font-weight: 400">AVERAGE SCORE:</p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
+              >
+                <%= data?.averageScore || "0" %>
+              </div>
+            </div>
+            <!-- <div style="flex: 1; display: flex; align-items: flex-end; gap: 4px">
+              <p style="margin: 0; font-size: 14px; font-weight: 400">GRADE:</p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
+              >
+                <%= data.annualRecord.annualGrade?.label || "" %>
+              </div>
+            </div> -->
+          </div>
+
+          <div style="display: flex; align-items: flex-end; gap: 4px; margin-top: 20px">
+            <p style="margin: 0; font-size: 14px; font-weight: 400">NEXT TERM BEGINS:</p>
+            <div
+              style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
+            >
+              <%= data.nextTermBegin %>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              align-items: flex-end;
+              gap: 4px;
+              margin-top: 20px;
+              font-size: 14px;
+            "
+          >
+            <p style="margin: 0; font-weight: 400">CLASS TEACHER'S REMARK:</p>
+            <div style="border-bottom: 1px solid #239160; flex: 1">
+              <%= data.classTeacherRemark %>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              font-size: 14px;
+              align-items: flex-end;
+              gap: 4px;
+              margin-top: 20px;
+            "
+          >
+            <p style="margin: 0; font-weight: 400">PRINCIPAL'S REMARK:</p>
+            <div style="border-bottom: 1px solid #239160; flex: 1"><%= data.principalRemark %></div>
+          </div>
+        </div>
+        <div class="text" style="margin-top: 30px; display: flex; gap: 20px">
+          <div style="width: 100%">
+            <div style="display: flex; align-items: center; justify-content: center">
+              <p
+                style="
+                  text-align: center;
+                  font-size: 14px;
+                  font-weight: 700;
+                  background-color: #f70294;
+                  padding: 6px;
+                  color: white;
+                  margin: 0;
+                  width: fit-content;
+                "
+              >
+                PRACTICAL SKILLS
+              </p>
+            </div>
+            <table
+              style="
+                border: 2px solid #239160;
+                width: 100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+              "
+            >
+              <thead>
+                <tr>
+                  <th
+                    style="
+                      width: 60%;
+                      font-size: 14px;
+                      font-weight: 700;
+                      border: 2px solid #239160;
+                      padding: 5px;
+                    "
+                  >
+                    NAME
+                  </th>
+                  <th
+                    style="
+                      width: 40%;
+                      font-size: 14px;
+                      font-weight: 700;
+                      border: 2px solid #239160;
+                      padding-left: 5px;
+                    "
+                  >
+                    Grade
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.practical_skills.forEach(function(skill) { %>
+                <tr>
+                  <td style="font-size: 14px; border: 2px solid #239160; padding: 5px">
+                    <%= skill.name %>
+                  </td>
+                  <td style="font-size: 14px; border: 2px solid #239160; padding-left: 5px">
+                    <%= skill.value %>
+                  </td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+          <div style="width: 100%">
+            <div style="display: flex; align-items: center; justify-content: center">
+              <p
+                style="
+                  text-align: center;
+                  font-size: 14px;
+                  font-weight: 700;
+                  background-color: #f70294;
+                  padding: 6px;
+                  margin: 0;
+                  color: white;
+                  width: fit-content;
+                "
+              >
+                CHARACTER DEVELOPMENT
+              </p>
+            </div>
+
+            <table
+              style="
+                border: 2px solid #239160;
+                width: 100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+              "
+            >
+              <thead>
+                <tr>
+                  <th
+                    style="
+                      width: 60%;
+                      font-size: 14px;
+                      font-weight: 700;
+                      border: 2px solid #239160;
+                      padding: 5px;
+                    "
+                  >
+                    NAME
+                  </th>
+                  <th
+                    style="
+                      width: 40%;
+                      font-size: 14px;
+                      font-weight: 700;
+                      border: 2px solid #239160;
+                      padding-left: 5px;
+                    "
+                  >
+                    Grade
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.character_development.forEach(function(character) { %>
+                <tr>
+                  <td style="font-size: 14px; border: 2px solid #239160; padding: 5px">
+                    <%= character.name %>
+                  </td>
+                  <td style="font-size: 14px; border: 2px solid #239160; padding-left: 5px">
+                    <%= character.value %>
+                  </td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+          <div style="width: 100%">
+            <div style="display: flex; align-items: center; justify-content: center">
+              <p
+                style="
+                  text-align: center;
+                  font-size: 14px;
+                  font-weight: 700;
+                  background-color: #f70294;
+                  padding: 6px;
+                  margin: 0;
+                  color: white;
+                  width: fit-content;
+                "
+              >
+                INTERPRETATION OF GRADE
+              </p>
+            </div>
+
+            <table
+              style="
+                border: 2px solid #239160;
+                width: 100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+              "
+            >
+              <thead>
+                <tr>
+                  <th
+                    style="
+                      width: 50%;
+                      font-size: 14px;
+                      font-weight: 700;
+                      border: 2px solid #239160;
+                      padding: 5px;
+                    "
+                  >
+                    NAME
+                  </th>
+                  <th
+                    style="
+                      width: 50%;
+                      font-size: 14px;
+                      font-weight: 700;
+                      border: 2px solid #239160;
+                      padding-left: 5px;
+                    "
+                  >
+                    Grade
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.grades.forEach(function(grade) { %>
+                <tr>
+                  <td style="font-size: 14px; border: 2px solid #239160; padding: 5px">
+                    <%= Number(grade.min) %> - <%= Number(grade.max) %>
+                  </td>
+                  <td style="font-size: 14px; border: 2px solid #239160; padding-left: 10px">
+                    <%= grade.label %> = <%= grade.description %>
+                  </td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="divider" style="width: 3000px; height: 1px"></div>
+    </div>
+  </body>
+</html>
