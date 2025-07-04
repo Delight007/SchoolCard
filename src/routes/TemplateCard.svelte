@@ -87,6 +87,13 @@ import sonate_academy from '$lib/images/sonate-academy.png';
     </div>
   </a>
 
+  <a href="/de-achievers">
+    <div class="root">
+      <img alt="Logo" src="{sonate_academy}" />
+      <h5>achievers</h5>
+    </div>
+  </a>
+
 </div>
 
 <!-- Correctly close the container div -->
