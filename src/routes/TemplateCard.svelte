@@ -83,7 +83,7 @@ import sonate_academy from '$lib/images/sonate-academy.png';
  <a href="/light-of-life">
     <div class="root">
       <img alt="Logo" src="{sonate_academy}" />
-      <h5>light</h5>
+      <h5>Lolis</h5>
     </div>
   </a>
 
@@ -91,6 +91,20 @@ import sonate_academy from '$lib/images/sonate-academy.png';
     <div class="root">
       <img alt="Logo" src="{sonate_academy}" />
       <h5>achievers</h5>
+    </div>
+  </a>
+
+  <a href="/star-light">
+    <div class="root">
+      <img alt="Logo" src="{sonate_academy}" />
+      <h5>Star-Light</h5>
+    </div>
+  </a>
+
+  <a href="/jiwo-academy">
+    <div class="root">
+      <img alt="Logo" src="{sonate_academy}" />
+      <h5>jiwo-academy</h5>
     </div>
   </a>
 
