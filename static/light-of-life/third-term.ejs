@@ -40,7 +40,7 @@
       }
 
       .container {
-        border: 2px solid red;
+        /* border: 2px solid red; */
         padding: 30px;
         margin: 4px;
 
@@ -94,12 +94,12 @@
             TERMINAL ASSESSMENT REPORT
           </h1>
           <!-- name and address -->
-           <div style="display: flex; margin-top: 20px; gap: 3%; align-items: center; justify-content: center;">
-            <h1 style="color: #000; font-size: 35px; margin: 0; width: 72%;">
+           <div style="display: flex; margin-top: 20px; gap: 3%; align-items: center; justify-content: center; flex-direction: column;">
+            <h1 style="color: #000; font-size: 35px; margin: 0; width: 100%;">
               <%= data.school.name?.toUpperCase() %>
             </h1>
             
-            <div style="width: 25%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
               <h4
               style="
                 margin: 0;
@@ -315,9 +315,9 @@
             </div>
           </div>
         </div>
-        <div style="margin-top: 30px; width:100% ; display: flex; gap: 2%;">
+        <div style="margin-top: 30px; width:100% ; display: flex; gap: 1%;">
          <!-- subject table,grade etc -->
-          <div style="width: 60%;">
+          <div style="width: 75%;">
            
             <table
               class="subject_table"
@@ -434,7 +434,7 @@
             </table>
           </div>
           <!-- psychomotor etc-->
-          <div style="width: 38%; display: flex; flex-direction: column; ">
+          <div style="width: 24%; display: flex; flex-direction: column; ">
             <h1 style="font-size: 20px;">NEXT TERM</h1>
             <div style=" display: flex; align-items: flex-end; gap: 4px">
               <p style="margin: 0; font-size: 14px; font-weight: 400">BEGINS:</p>
@@ -612,7 +612,7 @@
             width: 70%;
           "
         >
-          <p style="margin: 0; font-weight: 400">CLASS TEACHER'S COMMENT:</p>
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">CLASS TEACHER'S COMMENT:</p>
           <div style="border-bottom: 1px solid #000; flex: 1">
             <%= data.classTeacherRemark %>
           </div>
@@ -628,7 +628,7 @@
             width: 30% ;
           "
         >
-          <p style="margin: 0; font-weight: 400">CLASS TEACHER'S SIGNATURE:</p>
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">CLASS TEACHER'S SIGNATURE:</p>
           <div style="border-bottom: 1px solid #000; flex: 1"><%= data.classTeacherSignature %></div>
         </div>
          </div>
@@ -643,7 +643,7 @@
               width: 70% ;
             "
           >
-            <p style="margin: 0; font-weight: 400">HEAD TEACHER'S COMMENT:</p>
+            <p style="margin: 0; font-weight: 600; font-size: 14px;">HEAD TEACHER'S COMMENT:</p>
             <div style="border-bottom: 1px solid #000; flex: 1"><%= data.principalRemark %></div>
           </div>
           <div
@@ -656,15 +656,80 @@
               width: 30% ;
             "
           >
-            <p style="margin: 0; font-weight: 400">HEAD TEACHER'S SIGNATURE:</p>
+            <p style="margin: 0; font-weight: 600; font-size: 14px;">HEAD TEACHER'S SIGNATURE:</p>
             <div style="border-bottom: 1px solid #000; flex: 1"><%= data.principalSignature %></div>
           </div>
           </div>
          
         </div>
-        <div style="margin-top: 30px; display: flex; gap: 20px">
-         
-         
+        <div style="margin-top: 30px; display: flex; gap: 20px; align-items: center; ">
+          <div style="font-size: 14px; font-weight: 600;">NEXT TERM'S FEES:</div>
+          <div
+          style="
+            display: flex;
+            font-size: 12px;
+            align-items: flex-end;
+            gap: 4px;
+            width: 16%;
+            font-weight: 600;
+          "
+        >
+          <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">I.</SPan>TUITION.</p>
+          <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.tuition %></div>
+        </div>
+        <div
+        style="
+          display: flex;
+          font-size: 12px;
+          align-items: flex-end;
+          gap: 4px;
+          width: 16%;
+          font-weight: 600;
+        "
+      >
+        <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">II.</SPan>XTRA LESSON.</p>
+        <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.extraLesson %></div>
+      </div>
+      <div
+      style="
+        display: flex;
+        font-size: 12px;
+        align-items: flex-end;
+        gap: 4px;
+        width: 16%;
+        font-weight: 600;
+      "
+    >
+      <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">III.</SPan>BOOKS.</p>
+      <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.book %></div>
+    </div>
+    <div
+    style="
+      display: flex;
+      font-size: 12px;
+      align-items: flex-end;
+      gap: 4px;
+      width: 16%;
+      font-weight: 600;
+    "
+  >
+    <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">IV.</SPan>PTA LEVY.</p>
+    <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.pta %></div>
+  </div>
+  <div
+  style="
+    display: flex;
+    font-size: 12px;
+    align-items: flex-end;
+    gap: 4px;
+    width: 16%;
+    font-weight: 600;
+  "
+>
+  <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">V.</SPan>OTHERS.</p>
+  <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.others %></div>
+</div>
+         </div>
         </div>
       </div>
       <div style="width: 3000px; height: 1px"></div>

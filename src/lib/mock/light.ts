@@ -603,6 +603,13 @@ export const thirdTermData = {
     hall: null,
     campus:'OFF'
   },
+  nextTermFee:{
+    tuition: 16500,
+    extraLesson: 500,
+    book: 1000,
+    pta: 1000,
+    others: 1000
+  },
   numberOfDaysOpened: 0,
   nextTermBegin: 'Friday, June 28, 2024',
   numberInClass: 8,
@@ -992,6 +999,7 @@ export const thirdTermData = {
       value: null,
     },
   ],
+  
   annualRecord: {
     subjects: [
       {
