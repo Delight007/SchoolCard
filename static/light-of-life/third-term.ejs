@@ -23,7 +23,7 @@
     
       td,
       th {
-        border: 2px solid #239160;
+        border: 2px solid #000;
       }
 
       th, td {
@@ -36,11 +36,11 @@
       body {
         margin: 0;
         font-family: 'Roboto', sans-serif;
-        color: #239160;
+        color: #000;
       }
 
       .container {
-        border: 2px solid red;
+        /* border: 2px solid red; */
         padding: 30px;
         margin: 4px;
 
@@ -67,6 +67,7 @@
     <div class="container">
       <div class="report-card">
         <div style="display: flex; justify-content: space-between; gap: 20px">
+         
           <div style="border: 1px solid #000; width: 200px; height: 200px">
             <img
               src="<%= data.school.logo %>"
@@ -77,44 +78,52 @@
             />
           </div>
           <div style="display: flex; align-items: center; flex-direction: column">
-            <h1 style="color: #239160; font-size: 35px; margin: 0">
+            <h1
+            style="
+              font-size: 22px;
+              margin: 0;
+              font-weight:bolder;
+              padding: 8px;
+              color: black;
+              width: fit-content;
+              margin-top: 6px;
+              letter-spacing: 2px;
+              font-family:'Courier New', Courier, monospace;
+            "
+          >
+            TERMINAL ASSESSMENT REPORT
+          </h1>
+          <!-- name and address -->
+           <div style="display: flex; margin-top: 20px; gap: 3%; align-items: center; justify-content: center; flex-direction: column;">
+            <h1 style="color: #000; font-size: 35px; margin: 0; width: 100%;">
               <%= data.school.name?.toUpperCase() %>
             </h1>
-            <h3 style="font-size: 20px; color: rgb(51, 71, 75); margin: 0">
-              (NURSERY/PRIMARY/SECONDARY)
-            </h3>
-            <h4
+            
+            <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <h4
               style="
                 margin: 0;
                 font-size: 18px;
                 color: rgb(51, 71, 75);
                 font-weight: 400;
                 margin-top: 5px;
+                text-transform: uppercase;
+                font-weight: 700;
               "
             >
               <%= data.school.address %>
             </h4>
-            <h5 style="margin: 0; color: red; font-size: 16px; font-weight: 400; margin-top: 4px">
-              Motto: <%= data.school.motto %>
+            <h5 style="margin-top: 10px; font-size: 16px; color: rgb(51, 71, 75)">
+              08033057768, 08058738775
             </h5>
-            <!-- <h5 style="margin: 0; font-size: 10px; color: rgb(51, 71, 75)">
-              Tel: 09133035479, 08054336567
-            </h5> -->
-            <h2
-              style="
-                font-size: 14px;
-                margin: 0;
-                background-color: #f70294;
-                padding: 8px;
-                color: white;
-                width: fit-content;
-                margin-top: 6px;
-              "
-            >
-              TERMLY EXAMINATION REPORT SHEET
-            </h2>
-            <div style="margin-top: 10px"></div>
-            <h3 style="margin: 0; font-size: 18px; color: #239160">(JSS SECTION)</h3>
+            </div>
+           </div>
+           
+            <h3 style="font-size: 18px; color: black; text-decoration: underline; margin: 0; font-weight: 700;">
+           PERSONAL DATA
+            </h3>
+            
+            
           </div>
           <div
             style="
@@ -152,34 +161,17 @@
             <% } %>
           </div>
         </div>
-        <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px">
-          <div style="display: flex; align-items: flex-end; width: 30%; gap: 4px">
-            <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
-              ADMISSION NO:
-            </p>
-            <div
-              class="student-name"
-              style="
-                flex: 1;
-                border-bottom: 1px solid #239160;
-                font-size: 16px;
-                font-weight: 400;
-                padding-left: 5px;
-              "
-            >
-              <%= data?.student?.regNumber %>
-            </div>
-          </div>
+        <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px">       
           <div style="display: flex; gap: 10px">
             <div style="display: flex; align-items: flex-end; width: 60%; gap: 4px">
               <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
-                STUDENT NAME:
+                NAMEs <span style="font-size: 12px; font-weight: 700;">OF PUPILS</span>
               </p>
               <div
                 class="student-name"
                 style="
                   flex: 1;
-                  border-bottom: 1px solid #239160;
+                  border-bottom: 1px solid #000;
                   font-size: 16px;
                   font-weight: 400;
                   padding-left: 5px;
@@ -189,226 +181,470 @@
               </div>
             </div>
             <div style="display: flex; align-items: flex-end; gap: 4px; width: 20%">
-              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">GENDER:</p>
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">SEX:</p>
               <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
               >
                 <%= data.student.gender %>
               </div>
             </div>
             <div style="display: flex; align-items: flex-end; gap: 4px; width: 20%">
-              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
-                NO. IN CLASS:
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700; text-transform: uppercase;">
+                Date of Birth:
               </p>
               <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
               >
-                <%= data.numberInClass %>
+                <%= data.student.dob %>
               </div>
             </div>
           </div>
           <div style="display: flex; gap: 20px">
             <div style="display: flex; align-items: flex-end; gap: 4px; width: 40%">
               <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
-                STUDENT CLASS:
+                NATIONALITY:
               </p>
               <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
               >
-                <%= data.className %>
+                <%= data.student.nationality %>
               </div>
             </div>
             <div style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
-              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">TERM:</p>
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">STATE OF ORIGIN</p>
               <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
               >
-                <%= data.termName %>
+                <%= data.student.stateOfOrigin %>
               </div>
             </div>
+            <div style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                HOME TOWN:
+              </p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
+              >
+                <%= data.student.homeTown %>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 20px">
+             <div style="display: flex; align-items: flex-end; width: 30%; gap: 4px">
+            <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+              MATRIC NO:
+            </p>
+            <div
+              class="student-name"
+              style="
+                flex: 1;
+                border-bottom: 1px solid #000;
+                font-size: 16px;
+                font-weight: 400;
+                padding-left: 5px;
+              "
+            >
+              <%= data?.student?.regNumber %>
+            </div>
+          </div>
+            <div style="display: flex; align-items: flex-end; gap: 4px; width: 40%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                HALL:
+              </p>
+              <div style="flex: 1; font-size: 16px; border-bottom: 1px solid #000">
+                <%= data.student.hall %>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+                ON/OFF CAMPUS:
+              </p>
+              <div
+                style="flex: 1; font-size: 16px; font-weight: 400; border-bottom: 1px solid #000"
+              >
+                <%= data.student.campus %>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
+              SPONSOR:
+              </p>
+              <div
+                style="flex: 1; font-size: 16px; font-weight: 400; border-bottom: 1px solid #000"
+              >
+                <%= data.student.sponsor %>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 20px">
             <div style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
               <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
                 SESSION:
               </p>
               <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 16px; font-weight: 400"
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
               >
-                <%= data.sessionName %>
+              <%= data.sessionName %>
               </div>
             </div>
-          </div>
-          <div style="display: flex; gap: 20px">
-            <div style="display: flex; align-items: flex-end; gap: 4px; width: 40%">
-              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
-                NO OF DAYS SCHOOL OPENED:
-              </p>
-              <div style="flex: 1; font-size: 16px; border-bottom: 1px solid #239160">
-                <%= data.numberOfDaysOpened %>
+            <div style="display: flex; align-items: flex-end; gap: 4px; width: 20%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">TERM:</p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
+              >
+                <%= data.termName %>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-end; gap: 4px; width: 20%">
+              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">CLASS:</p>
+              <div
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
+              >
+                <%= data.className %>
               </div>
             </div>
             <div style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
               <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
-                NO OF DAYS PRESENT:
+               NO IN CLASS :
               </p>
               <div
-                style="flex: 1; font-size: 16px; font-weight: 400; border-bottom: 1px solid #239160"
+                style="flex: 1; border-bottom: 1px solid #000; font-size: 16px; font-weight: 400"
               >
-                <%= data.presentCount %>
-              </div>
-            </div>
-            <div style="display: flex; align-items: flex-end; gap: 4px; width: 30%">
-              <p style="margin: 0; font-size: 14px; line-height: 14px; font-weight: 700">
-                NO OF DAYS OUT OF SCHOOL:
-              </p>
-              <div
-                style="flex: 1; font-size: 16px; font-weight: 400; border-bottom: 1px solid #239160"
-              >
-                <%= data.numberOfDaysOpened - data.presentCount %>
+                <%= data.numberInClass %>
               </div>
             </div>
           </div>
         </div>
-        <div style="margin-top: 30px">
-          <table
-            style="
-              border: 1px solid #239160;
-              width: 100%;
-              table-layout: fixed;
-              border-collapse: collapse;
-            "
-          >
-            <thead>
-              <tr>
-                <th rowspan="2" style="width: 20%; font-size: 14px; padding: 5px; font-weight: 700">
-                  SUBJECTS
-                </th>
-                <th colspan="4" style="font-size: 14px">THIRD TERM</th>
-                <th rowspan="2" style="font-size: 14px">SECOND TERM B/F 100%</th>
-                <th rowspan="2" style="font-size: 14px">FIRST TERM B/F 100%</th>
-                <th rowspan="2" style="font-size: 14px">TOTAL</th>
-                <th rowspan="2" style="font-size: 14px">AVERAGE SCORE</th>
-                <th rowspan="2" style="font-size: 14px">GRADE</th>
-                <th rowspan="2" style="font-size: 14px">COMMENT</th>
-                <th rowspan="2" style="font-size: 14px">SIGN</th>
-              </tr>
-              <tr>
-                <th scope="col" style="font-size: 14px">CA 1 20%</th>
-                <th scope="col" style="font-size: 14px">CA 2 20%</th>
-                <th scope="col" style="font-size: 14px">EXAM</th>
-                <th scope="col" style="font-size: 14px">TOTAL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% data.subjects.forEach(function({
-                subjectName,
-                subjectId,
-                id1,
-                id2,
-                exam,
-                total,
-                averageScore,
-                grade,
-                comment,
-                sign,
-                assessments
-              }) { %>
-              <% const subject = data.annualRecord.subjects.find(subj => subj.subjectId ===
-              subjectId); %>
-              <tr>
-                <td style="font-size: 14px; padding: 5px; text-align: left;"><%= subjectName %></td>
-                <td style="font-size: 14px; padding-left: 5px">
-                  <%= assessments ? assessments[0] : '' %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px">
-                  <%= assessments ? assessments[1] : '' %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px">
-                  <%= assessments ? assessments[2] : '' %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px;  font-weight: bold;"><%= total %></td>
-                <td style="font-size: 14px; padding-left: 5px">
-                  <%= subject ? subject.secondTermTotal : '' %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px">
-                  <%= subject ? subject.firstTermTotal : '' %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px;font-weight: bold;">
-                  <%= subject ? subject.overAllTotal : '' %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px; ">
-                  <%= subject ? subject.overAllAverage : '' %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px">
-                  <%= grade ? grade?.label : "" %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px">
-                  <%= grade ? grade?.description : "" %>
-                </td>
-                <td style="font-size: 14px; padding-left: 5px"><%= sign %></td>
-              </tr>
-              <% }); %>
-            </tbody>
-          </table>
+        <div style="margin-top: 30px; width:100% ; display: flex; gap: 1%;">
+         <!-- subject table,grade etc -->
+          <div style="width: 75%;">
+           
+            <table
+              class="subject_table"
+              style="
+                border: 1px solid #8c375c;
+                width: 100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+              "
+            >
+              <thead>
+                <tr>
+                  <th colspan="9"
+                    style="
+                      text-align: center;
+                      font-size: 16px;
+                      font-weight: 800;
+                     
+                      color: black;
+                      padding: 8px;
+                      letter-spacing: 1px;
+                    "
+                  >
+                   1. ACADEMIC PERFORMANCE
+                  </th>
+                </tr>
+                <tr>
+                  <th style="width: 20%; font-size: 12px; padding: 5px; font-weight: 700">SUBJECTS</th>
+                  <th style="font-size: 12px; font-weight: 700">1st C/A (20%)</th>
+                  <th style="font-size: 12px; font-weight: 700">2nd C/A (20%)</th>
+                  <th style="font-size: 12px; font-weight: 700">EXAM (60%)</th>
+                  <th style="font-size: 12px; font-weight: 700">TOTAL (100%)</th>
+                  <th style="font-size: 12px; font-weight: 700">GRADE</th>
+                  <th style="font-size: 12px; font-weight: 700">POSITION</th>
+                  <th style="font-size: 12px; font-weight: 700">CLASS AVRG</th>
+                  <th style="font-size: 12px; font-weight: 700">SIGNATURE</th>
+                </tr>
+              </thead> 
+          
+              <tbody>
+                <% data?.subjects?.forEach(function({
+                  subjectName,
+                  exam,
+                  total,
+                  grade,
+                  sign,
+                  assessments,
+                  position
+                }) { %>
+                <tr>
+                  <td class="subjectName" style="font-size: 14px; padding: 5px; font-weight: 700">
+                    <%= subjectName %>
+                  </td>
+          
+                  <!-- 1st C/A -->
+                  <td style="font-size: 14px; padding-left: 5px">
+                    <%= assessments ? assessments[0] : '' %>
+                  </td>
+          
+                  <!-- 2nd C/A -->
+                  <td style="font-size: 14px; padding-left: 5px">
+                    <%= assessments ? assessments[1] : '' %>
+                  </td>
+          
+                  <!-- Exam -->
+                  <td style="font-size: 14px; padding-left: 5px"><%= exam %></td>
+          
+                  <!-- Total -->
+                  <td style="font-size: 14px; padding-left: 5px"><%= total %></td>
+          
+                  <!-- Grade -->
+                  <td style="font-size: 14px; padding-left: 5px"><%= grade ? grade?.label : '' %></td>
+          
+                  <!-- Position (Ordinal) -->
+                  <td style="font-size: 14px; padding-left: 5px">
+                    <% function getOrdinal(position) {
+                         if (!position) return '';
+                         if (position % 10 === 1 && position % 100 !== 11) return `${position}st`;
+                         if (position % 10 === 2 && position % 100 !== 12) return `${position}nd`;
+                         if (position % 10 === 3 && position % 100 !== 13) return `${position}rd`;
+                         return `${position}th`;
+                       } %>
+                    <%= getOrdinal(position) %>
+                  </td>
+          
+                  <!-- Remark -->
+                  <td style="font-size: 14px; padding-left: 5px">
+                    <%= data.averageScore %>
+                  </td>
+          
+                  <!-- Signature -->
+                  <td style="font-size: 14px; padding-left: 5px">
+                    <%= sign || '' %>
+                  </td>
+                </tr>
+                <% }); %>
+              </tbody>  
+             <!-- <tfoot style="border:none; border-bottom: 2px solid #8c375c;">
+                <tr style="border-left: none; border-right: none;">
+                  <td colspan="2" style="font-weight: 700; font-size: 14px; text-align: left; padding-right: 10px; border: none;">
+                    Total:
+                  </td>
+                  <td style="border-top: none; border-left: none; border-right: none;"></td>
+                  <td style="font-weight: 700; font-size: 14px; text-align: left; padding-right: 10px; border: none;">
+                    Average:
+                  </td>
+                  <td style="border-top: none; border-left: none; border-right: none;"></td>
+                  <td colspan="2" style="font-weight: 700; font-size: 14px; text-align: left; padding-right: 10px; border: none;">
+                    Class Average:
+                  </td>
+                  <td colspan="2" style="border-top: none; border-left: none; border-right: none;"></td>
+                </tr>
+              </tfoot> -->
+            </table>
+          </div>
+          <!-- psychomotor etc-->
+          <div style="width: 24%; display: flex; flex-direction: column; ">
+            <h1 style="font-size: 20px;">NEXT TERM</h1>
+            <div style=" display: flex; align-items: flex-end; gap: 4px">
+              <p style="margin: 0; font-size: 14px; font-weight: 400">BEGINS:</p>
+              <div
+                style="border-bottom: 1px solid #000; font-size: 14px; font-weight: 400"
+              >
+                <%= data.nextTermBegin %>
+              </div>
+            </div>
+            <!-- table 2 -->
+            <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+   <h2 style="text-transform: uppercase; font-weight: 700; font-size: 14px; text-decoration: underline;"> 2. psychomotor/phychoproductive skills </h2>
+  <table
+  style="
+    border: 2px solid #000;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  "
+>
+  <thead>
+    <tr>
+      <th style="width: 30%; word-wrap: break-word;"></th> <!-- Skill name column -->
+      <th>5</th>
+      <th>4</th>
+      <th>3</th>
+      <th>2</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.practical_skills.forEach(function(skill) { %>
+    <tr>
+      <td
+        style="
+          font-size: 12px;
+          border: 2px solid #000;
+          padding: 5px;
+          width: 30%;
+          word-wrap: break-word;
+        "
+      >
+        <%= skill.name %>
+      </td>
+      <% for (let i = 5; i >= 1; i--) { %>
+      <td
+        style="
+          font-size: 12px;
+          border: 2px solid #000;
+          text-align: center;
+        "
+      >
+        <%= skill.value == i ? '✔️' : '' %>
+      </td>
+      <% } %>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+</div>
+<!-- table 3 -->
+<div style="width: 100%; display: flex; flex-direction: column; align-items: center; ">
+  <h2 style="text-transform: uppercase; font-weight: 700; font-size: 14px; text-decoration: underline;"> 3. Attractive Attributes </h2>
+  
+  <table
+  style="
+    border: 2px solid #000;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  "
+>
+  <thead>
+    <tr>
+      <th
+        style="
+          width: 40%;
+          font-size: 14px;
+          font-weight: 700;
+          border: 2px solid #000;
+          padding: 5px;
+          word-wrap: break-word;
+        "
+      >
+        NAME
+      </th>
+      <th>5</th>
+      <th>4</th>
+      <th>3</th>
+      <th>2</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.character_development.forEach(function(character) { %>
+    <tr>
+      <td
+        style="
+          font-size: 14px;
+          border: 2px solid #000;
+          padding: 5px;
+          word-wrap: break-word;
+        "
+      >
+        <%= character.name %>
+      </td>
+      <% for (let i = 5; i >= 1; i--) { %>
+        <td
+          style="
+            font-size: 14px;
+            border: 2px solid #000;
+            text-align: center;
+          "
+        >
+          <%= character.value == i ? '✔️' : '' %>
+        </td>
+      <% } %>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+</div>
+
+<!-- table 4 -->
+<div style="width: 100%; display: flex; flex-direction: column; align-items: center; ">
+  <h2 style="text-transform: uppercase; font-weight: 700; font-size: 14px; text-decoration: underline;">KEY</h2>
+  <table
+  style="
+    border: 2px solid #000;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  "
+>
+  
+  <tbody>
+    <% data.grades.forEach(function(grade, index) { %>
+    <tr>
+      <td
+        style="
+          font-size: 14px;
+          border: 2px solid #000;
+          padding: 5px;
+          text-align: center;
+        "
+      >
+        <%= 5 - index %>
+      </td>
+      <td style="font-size: 14px; border: 2px solid #000; padding: 5px">
+        <%= grade.label %> = <%= grade.description %>
+      </td>
+      <td style="font-size: 14px; border: 2px solid #000; padding: 5px">
+        <%= Number(grade.min) %> - <%= Number(grade.max) %>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+</div>
+          </div>
+          
         </div>
 
         <div style="margin-top: 30px">
-          <div style="display: flex; gap: 20px">
-            <div style="flex: 1; display: flex; align-items: flex-end; gap: 4px">
-              <p style="margin: 0; font-size: 14px; font-weight: 400">MARK OBTAINABLE:</p>
-              <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
-              >
-                <%= data.annualRecord.annualMarkObtainable ? data.annualRecord.annualMarkObtainable : '' %>
-              </div>
-            </div>
-            <div style="flex: 1; display: flex; align-items: flex-end; gap: 4px">
-              <p style="margin: 0; font-size: 14px; font-weight: 400">MARKS OBTAINED:</p>
-              <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
-              >
-                <%= data.annualRecord.annualMarkObtained ? data.annualRecord.annualMarkObtained : '' %>
-              </div>
-            </div>
-            <div style="flex: 1; display: flex; align-items: flex-end; gap: 4px">
-              <p style="margin: 0; font-size: 14px; font-weight: 400">AVERAGE SCORE:</p>
-              <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
-              >
-                <%= data.annualRecord.annualAverageScore || "0" %>
-              </div>
-            </div>
-            <div style="flex: 1; display: flex; align-items: flex-end; gap: 4px">
-              <p style="margin: 0; font-size: 14px; font-weight: 400">GRADE:</p>
-              <div
-                style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
-              >
-                <%= data.annualRecord.annualGrade?.label || "" %>
-              </div>
-            </div>
+         <div style="display: flex; gap: 10px; ">
+          <div
+          style="
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            margin-top: 20px;
+            font-size: 14px;
+            width: 70%;
+          "
+        >
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">CLASS TEACHER'S COMMENT:</p>
+          <div style="border-bottom: 1px solid #000; flex: 1">
+            <%= data.classTeacherRemark %>
           </div>
-
-          <div style="display: flex; align-items: flex-end; gap: 4px; margin-top: 20px">
-            <p style="margin: 0; font-size: 14px; font-weight: 400">NEXT TERM BEGINS:</p>
+          
+        </div>
+        <div
+          style="
+            display: flex;
+            font-size: 14px;
+            align-items: flex-end;
+            gap: 4px;
+            margin-top: 20px;
+            width: 30% ;
+          "
+        >
+          <p style="margin: 0; font-weight: 600; font-size: 14px;">CLASS TEACHER'S SIGNATURE:</p>
+          <div style="border-bottom: 1px solid #000; flex: 1"><%= data.classTeacherSignature %></div>
+        </div>
+         </div>
+          <div style="display: flex; gap: 10px;">
             <div
-              style="flex: 1; border-bottom: 1px solid #239160; font-size: 14px; font-weight: 400"
-            >
-              <%= data.nextTermBegin %>
-            </div>
-          </div>
-
-          <div
             style="
               display: flex;
+              font-size: 14px;
               align-items: flex-end;
               gap: 4px;
               margin-top: 20px;
-              font-size: 14px;
+              width: 70% ;
             "
           >
-            <p style="margin: 0; font-weight: 400">CLASS TEACHER'S REMARK:</p>
-            <div style="border-bottom: 1px solid #239160; flex: 1">
-              <%= data.classTeacherRemark %>
-            </div>
+            <p style="margin: 0; font-weight: 600; font-size: 14px;">HEAD TEACHER'S COMMENT:</p>
+            <div style="border-bottom: 1px solid #000; flex: 1"><%= data.principalRemark %></div>
           </div>
           <div
             style="
@@ -417,233 +653,83 @@
               align-items: flex-end;
               gap: 4px;
               margin-top: 20px;
+              width: 30% ;
             "
           >
-            <p style="margin: 0; font-weight: 400">PRINCIPAL'S REMARK:</p>
-            <div style="border-bottom: 1px solid #239160; flex: 1"><%= data.principalRemark %></div>
+            <p style="margin: 0; font-weight: 600; font-size: 14px;">HEAD TEACHER'S SIGNATURE:</p>
+            <div style="border-bottom: 1px solid #000; flex: 1"><%= data.principalSignature %></div>
           </div>
-          <div
-            style="
-              display: flex;
-              font-size: 14px;
-              align-items: center;
-              gap: 20px;
-              margin-top: 20px;
-              justify-content: space-between;
-            "
-          >
-            <div style="display: flex; font-size: 14px; gap: 4px; width: 48%">
-              <p style="margin: 0; font-weight: 400">PROMOTED TO:</p>
-              <div style="border-bottom: 1px solid #239160; flex: 1">
-                <%= data.promoted ? data.nextClassName : '' %>
-              </div>
-            </div>
-            <div style="display: flex; font-size: 14px; gap: 4px; width: 48%">
-              <p style="margin: 0; font-weight: 400">TO REPEAT:</p>
-              <div style="border-bottom: 1px solid #239160; flex: 1">
-                <%= data.promoted ? '' : data.className %>
-              </div>
-            </div>
           </div>
+         
         </div>
-        <div style="margin-top: 30px; display: flex; gap: 20px">
-          <div style="width: 100%">
-            <div style="display: flex; align-items: center; justify-content: center">
-              <p
-                style="
-                  text-align: center;
-                  font-size: 14px;
-                  font-weight: 700;
-                  background-color: #f70294;
-                  padding: 6px;
-                  color: white;
-                  margin: 0;
-                  width: fit-content;
-                "
-              >
-                PRACTICAL SKILLS
-              </p>
-            </div>
-            <table
-              style="
-                border: 2px solid #239160;
-                width: 100%;
-                table-layout: fixed;
-                border-collapse: collapse;
-              "
-            >
-              <thead>
-                <tr>
-                  <th
-                    style="
-                      width: 60%;
-                      font-size: 14px;
-                      font-weight: 700;
-                      border: 2px solid #239160;
-                      padding: 5px;
-                    "
-                  >
-                    NAME
-                  </th>
-                  <th
-                    style="
-                      width: 40%;
-                      font-size: 14px;
-                      font-weight: 700;
-                      border: 2px solid #239160;
-                      padding-left: 5px;
-                    "
-                  >
-                    Grade
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <% data.practical_skills.forEach(function(skill) { %>
-                <tr>
-                  <td style="font-size: 14px; border: 2px solid #239160; padding: 5px">
-                    <%= skill.name %>
-                  </td>
-                  <td style="font-size: 14px; border: 2px solid #239160; padding-left: 5px">
-                    <%= skill.value %>
-                  </td>
-                </tr>
-                <% }); %>
-              </tbody>
-            </table>
-          </div>
-          <div style="width: 100%">
-            <div style="display: flex; align-items: center; justify-content: center">
-              <p
-                style="
-                  text-align: center;
-                  font-size: 14px;
-                  font-weight: 700;
-                  background-color: #f70294;
-                  padding: 6px;
-                  margin: 0;
-                  color: white;
-                  width: fit-content;
-                "
-              >
-                CHARACTER DEVELOPMENT
-              </p>
-            </div>
-
-            <table
-              style="
-                border: 2px solid #239160;
-                width: 100%;
-                table-layout: fixed;
-                border-collapse: collapse;
-              "
-            >
-              <thead>
-                <tr>
-                  <th
-                    style="
-                      width: 60%;
-                      font-size: 14px;
-                      font-weight: 700;
-                      border: 2px solid #239160;
-                      padding: 5px;
-                    "
-                  >
-                    NAME
-                  </th>
-                  <th
-                    style="
-                      width: 40%;
-                      font-size: 14px;
-                      font-weight: 700;
-                      border: 2px solid #239160;
-                      padding-left: 5px;
-                    "
-                  >
-                    Grade
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <% data.character_development.forEach(function(character) { %>
-                <tr>
-                  <td style="font-size: 14px; border: 2px solid #239160; padding: 5px">
-                    <%= character.name %>
-                  </td>
-                  <td style="font-size: 14px; border: 2px solid #239160; padding-left: 5px">
-                    <%= character.value %>
-                  </td>
-                </tr>
-                <% }); %>
-              </tbody>
-            </table>
-          </div>
-          <div style="width: 100%">
-            <div style="display: flex; align-items: center; justify-content: center">
-              <p
-                style="
-                  text-align: center;
-                  font-size: 14px;
-                  font-weight: 700;
-                  background-color: #f70294;
-                  padding: 6px;
-                  margin: 0;
-                  color: white;
-                  width: fit-content;
-                "
-              >
-                INTERPRETATION OF GRADE
-              </p>
-            </div>
-
-            <table
-              style="
-                border: 2px solid #239160;
-                width: 100%;
-                table-layout: fixed;
-                border-collapse: collapse;
-              "
-            >
-              <thead>
-                <tr>
-                  <th
-                    style="
-                      width: 50%;
-                      font-size: 14px;
-                      font-weight: 700;
-                      border: 2px solid #239160;
-                      padding: 5px;
-                    "
-                  >
-                    NAME
-                  </th>
-                  <th
-                    style="
-                      width: 50%;
-                      font-size: 14px;
-                      font-weight: 700;
-                      border: 2px solid #239160;
-                      padding-left: 5px;
-                    "
-                  >
-                    Grade
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <% data.grades.forEach(function(grade) { %>
-                <tr>
-                  <td style="font-size: 14px; border: 2px solid #239160; padding: 5px">
-                    <%= Number(grade.min) %> - <%= Number(grade.max) %>
-                  </td>
-                  <td style="font-size: 14px; border: 2px solid #239160; padding-left: 10px">
-                    <%= grade.label %> = <%= grade.description %>
-                  </td>
-                </tr>
-                <% }); %>
-              </tbody>
-            </table>
-          </div>
+        <div style="margin-top: 30px; display: flex; gap: 20px; align-items: center; ">
+          <div style="font-size: 14px; font-weight: 600;">NEXT TERM'S FEES:</div>
+          <div
+          style="
+            display: flex;
+            font-size: 12px;
+            align-items: flex-end;
+            gap: 4px;
+            width: 16%;
+            font-weight: 600;
+          "
+        >
+          <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">I.</SPan>TUITION.</p>
+          <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.tuition %></div>
+        </div>
+        <div
+        style="
+          display: flex;
+          font-size: 12px;
+          align-items: flex-end;
+          gap: 4px;
+          width: 16%;
+          font-weight: 600;
+        "
+      >
+        <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">II.</SPan>XTRA LESSON.</p>
+        <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.extraLesson %></div>
+      </div>
+      <div
+      style="
+        display: flex;
+        font-size: 12px;
+        align-items: flex-end;
+        gap: 4px;
+        width: 16%;
+        font-weight: 600;
+      "
+    >
+      <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">III.</SPan>BOOKS.</p>
+      <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.book %></div>
+    </div>
+    <div
+    style="
+      display: flex;
+      font-size: 12px;
+      align-items: flex-end;
+      gap: 4px;
+      width: 16%;
+      font-weight: 600;
+    "
+  >
+    <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">IV.</SPan>PTA LEVY.</p>
+    <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.pta %></div>
+  </div>
+  <div
+  style="
+    display: flex;
+    font-size: 12px;
+    align-items: flex-end;
+    gap: 4px;
+    width: 16%;
+    font-weight: 600;
+  "
+>
+  <p style="margin: 0; font-weight: 400"><SPan style="font-weight: 600;">V.</SPan>OTHERS.</p>
+  <div style="border-bottom: 1px solid #000; flex: 1"><%= data.nextTermFee.others %></div>
+</div>
+         </div>
         </div>
       </div>
       <div style="width: 3000px; height: 1px"></div>

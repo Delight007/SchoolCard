@@ -2,7 +2,7 @@ export const firstTermData = {
   sessionName: '2025/2026',
   termName: '1st Term',
   school: {
-    name: 'Sonates Academy',
+    name: 'Jiwo Academy',
     logo: '',
     motto: 'Education and Discipline.',
     address: 'Kinkapa Bosso, Minna Niger State.',
@@ -149,17 +149,19 @@ export const thirdTermData = {
   sessionName: '2025/2026',
   termName: '3rd Term',
   school: {
-    name: 'FORTUNE ROYAL ACADEMY',
+    name: 'Jiwo Academy',
     logo: '',
-    motto: 'Education and Discipline.',
-    address: 'Off Police Station Road Barkin-Sale Minna, Niger State',
+    motto: 'Knowledge, Character and Discipline.',
+    address: 'Minna Niger State.',
   },
   student: {
     regNumber: 'NPA/24/25/0018',
     name: 'Jacob Opa Opera',
     passport: null,
     gender: 'MALE',
-    house: "Red"
+    dob: 'may, 5th 2021',
+    position: '1st',
+    house:'blue'
   },
   numberOfDaysOpened: 0,
   nextTermBegin: 'Friday, June 28, 2024',
@@ -167,7 +169,6 @@ export const thirdTermData = {
   className: 'KG 2',
   nextClassName: 'Nursery 1',
   averageScore: '48.67',
-  classHighestMark:250,
   markObtainable: 300,
   markObtained: 146,
   overallGrade: {
@@ -181,7 +182,7 @@ export const thirdTermData = {
       subjectName: 'Mathematics',
       subjectId: '2fdf5a2d-0606-499f-aff5-4369c5f33c8c',
       averageScore: 139,
-      assessments: [20, 10, 10, 60],
+      assessments: [20, 47, 10],
       total: 77,
       grade: {
         label: 'A',
@@ -491,10 +492,9 @@ export const thirdTermData = {
   ],
   classTeacherRemark: 'Very good keep it up',
   principalRemark: 'An Excellent Result',
-  date: 28,
-  signature: null,
   presentCount: 20,
   promoted: true,
+  numberOFSubject:12,
   practical_skills: [
     {
       name: 'Handwriting',
