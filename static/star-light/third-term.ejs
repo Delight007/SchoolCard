@@ -90,7 +90,7 @@
               <h4
               style="
                 margin: 0;
-                font-size: 16px;
+                font-size: 18px;
                 color: #a37396;
                 font-weight: 400;
                 margin-top: 5px;
@@ -175,9 +175,9 @@
           </div>
         </div>
        
-        <div style="display: flex;">
+        <div style="display: flex; gap: 1%;">
           <!-- student details -->
-          <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px; width: 100%; border: 2px solid #a37396; padding: 6px;">       
+          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px; width: 75%; border: 2px solid #a37396; padding: 6px;">       
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 2%; width: 100%;">
               <div style="display: flex; width: 49%; gap: 4px">
                 <p style="margin: 0; font-size: 14px;  font-weight: 700">
@@ -338,7 +338,30 @@
            </div>
            
           </div>
-          
+          <div style="margin-top: 10px; width: 24%; display: flex; flex-direction: column; align-items: center;">
+            <table
+            style="
+              border: 2px solid #a37396;
+              width: 100%;
+              table-layout: fixed;
+              border-collapse: collapse;
+            "
+          >
+            
+            <tbody>
+              <% data.grades.forEach(function(grade, index) { %>
+              <tr>
+                <td style="font-size: 14px; border: 2px solid #a37396; padding: 7px">
+                  <%= grade.label %> = <%= grade.description %>
+                </td>
+                <td style="font-size: 14px; border: 2px solid #a37396; padding: 7px">
+                  <%= Number(grade.min) %> - <%= Number(grade.max) %>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+             </div>
         </div>
 
         <div style="margin-top: 30px">
@@ -385,7 +408,7 @@
             }) { %>
             <% const subject = data.annualRecord.subjects.find(subj => subj.subjectId === subjectId); %>
             <tr>
-              <td style="font-size: 14px; padding: 5px; text-align: left;"><%= subjectName %></td>
+              <td style="font-size: 14px; padding: 5px; text-align: left;font-weight:700;"><%= subjectName %></td>
               <td style="font-size: 14px; padding-left: 5px">
                 <%= assessments ? Number(assessments[0]) + Number(assessments[1]) : '' %>
               </td>
@@ -402,7 +425,7 @@
               <td style="font-size: 14px; padding-left: 5px; font-weight: bold;">
                 <%= subject ? subject.overAllTotal : '' %>
               </td>
-              <td style="font-size: 14px; padding-left: 5px">
+              <td style="font-size: 14px; padding-left: 5px; font-weight: bold;">
                 <%= grade ? grade?.label : "" %>
               </td>
               <td style="font-size: 14px; padding-left: 5px">
@@ -425,7 +448,6 @@
             font-size: 14px;
             align-items: flex-end;
             gap: 4px;
-            margin-top: 20px;
             width: 70% ;
           "
         >
@@ -438,7 +460,7 @@
             font-size: 14px;
             align-items: flex-end;
             gap: 4px;
-            margin-top: 20px;
+        
             width: 30% ;
           "
         >
@@ -621,7 +643,7 @@
   </div>
 </div>
 
-<div style="margin-top: 30px; width: 100%; display: flex; flex-direction: column; align-items: center; ">
+<!-- <div style="margin-top: 10px; width: 100%; display: flex; flex-direction: column; align-items: center;">
   <table
   style="
     border: 2px solid #a37396;
@@ -644,8 +666,7 @@
     <% }); %>
   </tbody>
 </table>
-
-          </div>
+   </div> -->
 
           
          </div>
@@ -663,7 +684,7 @@
             width: 70%;
           "
         >
-          <p style="margin: 0; font-weight: 400">Class Teacher's Remark:</p>
+          <p style="margin: 0; font-weight: bold;">Class Teacher's Remark:</p>
           <div style="border-bottom: 1px solid #a37396; flex: 1">
             <%= data.classTeacherRemark %>
           </div>
@@ -679,7 +700,7 @@
             width: 30% ;
           "
         >
-          <p style="margin: 0; font-weight: 400">Sign:</p>
+          <p style="margin: 0; font-weight: bold;">Sign:</p>
           <div style="border-bottom: 1px solid #a37396; flex: 1"><%= data.classTeacherSignature %></div>
         </div>
          </div>
@@ -694,7 +715,7 @@
               width: 70% ;
             "
           >
-            <p style="margin: 0; font-weight: 400">Head Teacher's Comment:</p>
+            <p style="margin: 0; font-weight: bold;">Head Teacher's Comment:</p>
             <div style="border-bottom: 1px solid #a37396; flex: 1"><%= data.principalRemark %></div>
           </div>
           <div
@@ -707,7 +728,7 @@
               width: 30% ;
             "
           >
-            <p style="margin: 0; font-weight: 400">Sign:</p>
+            <p style="margin: 0; font-weight: bold;">Sign:</p>
             <div style="border-bottom: 1px solid #a37396; flex: 1"><%= data.principalSignature %></div>
           </div>
           </div>
